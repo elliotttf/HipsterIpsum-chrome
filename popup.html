@@ -1,0 +1,50 @@
+<style>
+body {
+  min-width:357px;
+  overflow-x:hidden;
+}
+.bold {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+</style>
+
+<script>
+var req = new XMLHttpRequest();
+req.open(
+  'GET',
+  'http://hipsterjesus.com/api/',
+  true
+);
+req.onload = getHip;
+req.send(null);
+
+function getHip() {
+  // Create a header.
+  var header = document.createElement('div');
+  var headTxt = document.createTextNode('HipsterIpsum');
+  header.className = 'bold';
+  header.appendChild(headTxt);
+  document.body.appendChild(header);
+
+  // Create the textarea.
+  var res = JSON.parse(req.responseText);
+  var text = document.createElement('textarea');
+  text.id = 'hipsteripsum';
+  text.cols = '80';
+  text.rows = '30';
+  var pOpen = /<p>/g
+  var pClose= /<\/p>/g
+  var textValue = res.text;
+  textValue = textValue.replace(pOpen, '');
+  textValue = textValue.replace(pClose, "\n");
+  text.value = textValue;
+  document.body.appendChild(text);
+  document.getElementById('hipsteripsum').focus();
+  document.getElementById('hipsteripsum').select();
+
+  // Thanks.
+  var thanks = document.createTextNode('Thanks to the HipsterJesus API: http://hipsterjesus.com/');
+  document.body.appendChild(thanks);
+}
+</script>
