@@ -7,46 +7,36 @@ body {
   font-weight: bold;
   font-size: 1.5em;
 }
+#refresh {
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline;
+}
+#refresh:hover {
+  text-decoration: none;
+}
 </style>
 
-<script>
-var req = new XMLHttpRequest();
-req.open(
-  'GET',
-  'http://hipsterjesus.com/api/',
-  true
-);
-req.onload = getHip;
-req.send(null);
+<div class="bold">HipsterIpsum</div>
+<textarea id="hipsteripsum" cols="80" rows="30"></textarea>
+<div id="refresh">refresh</div>
 
+<script type="text/javascript" src="ipsum.js"></script>
+<script type="text/javascript">
 function getHip() {
-  // Create a header.
-  var header = document.createElement('div');
-  var headTxt = document.createTextNode('HipsterIpsum');
-  header.className = 'bold';
-  header.appendChild(headTxt);
-  document.body.appendChild(header);
-
-  // Create the textarea.
-  var res = JSON.parse(req.responseText);
-  var text = document.createElement('textarea');
-  text.id = 'hipsteripsum';
-  text.cols = '80';
-  text.rows = '30';
-  var pOpen = /<p>/g
-  var pClose= /<\/p>/g
-  var textValue = res.text;
-  textValue = textValue.replace(pOpen, '');
-  textValue = textValue.replace(pClose, "\n");
-  text.value = textValue;
-  document.body.appendChild(text);
-  document.getElementById('hipsteripsum').focus();
-  document.getElementById('hipsteripsum').select();
-
-  // Thanks.
-  var thanks = document.createTextNode('Thanks to the HipsterJesus API: http://hipsterjesus.com/');
-  document.body.appendChild(thanks);
+  var i = new Ipsum(3, false);
+  // Update the textarea.
+  var text = document.getElementById('hipsteripsum');
+  text.value = i.get();
+  text.focus();
+  text.select();
 }
+
+window.onload = function() {
+  var refresh = document.getElementById('refresh');
+  refresh.onclick = getHip;
+  getHip();
+};
 </script>
 <script type="text/javascript">
 
