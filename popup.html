@@ -17,40 +17,25 @@ body {
 }
 </style>
 
-<script type="text/javascript" src="ipsum.js" />
-<script>
-window.onload = function init() {
-  var i = new Ipsum(4, false);
-  // Create a header.
-  var header = document.createElement('div');
-  var headTxt = document.createTextNode('HipsterIpsum');
-  header.className = 'bold';
-  header.appendChild(headTxt);
-  document.body.appendChild(header);
+<div class="bold">HipsterIpsum</div>
+<textarea id="hipsteripsum" cols="80" rows="30"></textarea>
+<div id="refresh">refresh</div>
 
-  // Create the textarea.
-  var text = document.createElement('textarea');
-  text.id = 'hipsteripsum';
-  text.cols = '80';
-  text.rows = '30';
+<script type="text/javascript" src="ipsum.js"></script>
+<script type="text/javascript">
+function getHip() {
+  var i = new Ipsum(3, false);
+  // Update the textarea.
+  var text = document.getElementById('hipsteripsum');
   text.value = i.get();
-  document.body.appendChild(text);
-  document.getElementById('hipsteripsum').focus();
-  document.getElementById('hipsteripsum').select();
+  text.focus();
+  text.select();
+}
 
-  // Bottom
-  var bottom = document.createElement('div');
-  bottom.id = 'bottom';
-
-  // Refresh button.
-  var refresh = document.createElement('div');
-  var refreshTxt = document.createTextNode('refresh');
-  refresh.id = 'refresh';
-  refresh.onclick = i.get();
-  refresh.appendChild(refreshTxt);
-  bottom.appendChild(refresh);
-
-  document.body.appendChild(bottom);
+window.onload = function() {
+  var refresh = document.getElementById('refresh');
+  refresh.onclick = getHip;
+  getHip();
 };
 </script>
 <script type="text/javascript">
