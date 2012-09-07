@@ -40,6 +40,7 @@ Ipsum.hipster = [
   '8-bit',
   'artisan',
   'bahn mi',
+  'beard',
   'before they sold out',
   'bicycle',
   'biodiesel',
@@ -49,15 +50,20 @@ Ipsum.hipster = [
   'farm-to-table',
   'fixie',
   'food truck',
+  'foodie',
   'hoodie',
   'indie',
   'keytar',
+  'laserdisc',
   'mustache',
+  'noise-rock',
   'organic',
   'specs',
   'skateboard',
+  'tattoo',
   'tofu',
   'vegan',
+  'vim', // lol
   'vinyl',
   'viral',
   "you probably haven't heard of them",
@@ -68,7 +74,8 @@ Ipsum.hipster = [
   'Portland',
   'San Francisco',
   "Tom's",
-  'VHS'
+  'VHS',
+  'wire-rimmed glasses'
 ];
 
 /**
