@@ -15,11 +15,17 @@ module.exports = function(grunt) {
         ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
     },
     lint: {
-      files: ['ipsum.js']
+      files: ['ipsum.js', 'popup.js']
+    },
+    concat: {
+      dist: {
+        src: ['<banner:meta.banner', 'ipsum.js', 'popup.js'],
+        dest: 'dist/<%= pkg.name %>.js'
+      }
     },
     min: {
       dist: {
-        src: ['<banner:meta.banner>', 'ipsum.js'],
+        src: ['<banner:meta.banner>', '<config:concat.dist.dest>'],
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
@@ -41,7 +47,9 @@ module.exports = function(grunt) {
         eqnull: true,
         browser: true
       },
-      globals: {}
+      globals: {
+        Ipsum: true
+      }
     },
     uglify: {}
   });
@@ -51,12 +59,13 @@ module.exports = function(grunt) {
     var pkg = grunt.config('pkg');
 
     var manifest = {
+      manifest_version: 2,
       name: pkg.name,
       version: pkg.version,
       description: pkg.description,
       browser_action: {
         default_icon: "icon.png",
-        popup: "popup.html"
+        default_popup: "popup.html"
       }
     };
 
@@ -87,7 +96,7 @@ module.exports = function(grunt) {
       else if (result.bump === 'p') {
         grunt.task.run('bump:patch');
       }
-      grunt.task.run('lint min manifest');
+      grunt.task.run('lint concat min manifest');
       grunt.file.copy('icon.png', 'dist/icon.png');
       grunt.file.copy('popup.html', 'dist/popup.html');
       done();
@@ -95,7 +104,7 @@ module.exports = function(grunt) {
   });
 
   // Default task.
-  grunt.registerTask('default', 'lint min');
+  grunt.registerTask('default', 'lint concat min');
 
   grunt.loadNpmTasks('grunt-bump');
 };
