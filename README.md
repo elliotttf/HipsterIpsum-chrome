@@ -18,7 +18,7 @@ To build the package, run:
 grunt build
 ```
 
-If a new version isn't being deployed enter the version type:
+If a new version is being deployed enter the version type:
 
 * ```M``` for major
 * ```m``` for minor
