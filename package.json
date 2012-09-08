@@ -1,0 +1,19 @@
+{
+  "name": "HipsterIpsum",
+  "version": "1.0.2",
+  "description": "Chrome plugin for HipsterIpsum generation.",
+  "main": "ipsum.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/elliotttf/HipsterIpsum.git"
+  },
+  "dependencies": {
+    "grunt-bump": "0.0.1",
+    "prompt": "0.2.7"
+  },
+  "author": "Elliott Foster",
+  "license": "MIT"
+}
