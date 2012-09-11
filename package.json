@@ -14,6 +14,9 @@
     "grunt-bump": "0.0.1",
     "prompt": "0.2.7"
   },
-  "author": "Elliott Foster",
+  "author": {
+    "name": "Elliott Foster",
+    "url": "http://codebrews.com"
+  },
   "license": "MIT"
 }
