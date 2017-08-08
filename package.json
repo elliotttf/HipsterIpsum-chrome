@@ -11,8 +11,8 @@
     "url": "git://github.com/elliotttf/HipsterIpsum.git"
   },
   "dependencies": {
-    "grunt-bump": "0.0.1",
-    "prompt": "0.2.7"
+    "grunt-bump": "0.8.0",
+    "prompt": "1.0.0"
   },
   "author": {
     "name": "Elliott Foster",
