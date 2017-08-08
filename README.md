@@ -1,6 +1,8 @@
 HipsterIpsum
 ============
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/elliotttf/HipsterIpsum-chrome.svg)](https://greenkeeper.io/)
+
 A simple google chrome extension for generating HipsterIpsum text.
 
 Want to suggest a new hipster word? Open a pull request!
